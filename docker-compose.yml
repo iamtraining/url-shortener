@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:12
+    container_name: psql
+    restart: always
+    ports: 
+      - 5433:5432
+    networks: 
+      - mynet
+    volumes: 
+      - ./pg-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment: 
+      - POSTGRES_USER=${DB_USER}  
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      - DATABASE_HOST=${DB_HOST}
+    
+
+  app:
+    build: .
+    container_name: urlshortener
+    ports: 
+      - 3000:3000
+    environment:
+      - DATABASE_HOST=${DB_HOST} 
+    links:
+      - db
+    networks: 
+      - mynet
+
+networks:
+  mynet:
+    driver: bridge
