@@ -16,12 +16,6 @@ func BootStore() {
 		Cfg.Host,
 		Cfg.Port,
 		Cfg.DBName)
-	fmt.Println(Cfg.Driver,
-		Cfg.User,
-		Cfg.Passsword,
-		Cfg.Host,
-		Cfg.Port,
-		Cfg.DBName)
 	Store, err = store.NewStore(url)
 	if err != nil {
 		panic(err)
