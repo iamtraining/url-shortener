@@ -18,7 +18,7 @@ func main() {
 	configs.LoadCfg()
 	configs.BootStore()
 	routes.Load()
-	err := App.Listen(":3000")
+	err := App.Listen(configs.Cfg.SrvPort)
 	if err != nil {
 		panic(err)
 	}

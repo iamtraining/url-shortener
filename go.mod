@@ -9,5 +9,6 @@ require (
 	github.com/jmoiron/sqlx v1.2.0
 	github.com/joho/godotenv v1.3.0
 	github.com/lib/pq v1.8.0
+	github.com/matoous/go-nanoid v1.4.1
 	github.com/twinj/uuid v1.0.0
 )

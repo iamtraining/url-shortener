@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/gofiber/fiber"
+	"github.com/iamtraining/url-shortener/configs"
 	"github.com/iamtraining/url-shortener/models"
 )
 
@@ -11,7 +12,7 @@ func UrlPost(c *fiber.Ctx) {
 		"id":            url.ID,
 		"original":      url.Original,
 		"short":         url.Short,
-		"shortened_url": "localhost:3000/" + url.ID,
+		"shortened_url": configs.Cfg.SrvAddr + ":" + configs.Cfg.SrvPort + "/" + url.ID,
 	})
 	return
 }

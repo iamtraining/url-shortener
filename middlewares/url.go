@@ -6,13 +6,13 @@ import (
 
 	"github.com/gofiber/fiber"
 	. "github.com/iamtraining/url-shortener/app"
-	"github.com/iamtraining/url-shortener/libraries"
 	"github.com/iamtraining/url-shortener/models"
+	gonanoid "github.com/matoous/go-nanoid"
 )
 
 func ValidateUrlPost(c *fiber.Ctx) {
 	var (
-		g = libraries.Generate(7)
+		g, _ = gonanoid.Nanoid()
 	)
 
 	url := models.UrlForm{
